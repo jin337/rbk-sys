@@ -101,7 +101,7 @@ const Swiper = () => {
     } extra={
       <Space>
         <Button type="primary" icon={<SearchOutlined />}>搜索</Button>
-        <Button type="primary" icon={<PlusOutlined />}>添加</Button>
+        <Button type="primary" icon={<PlusOutlined />}>新建</Button>
       </Space>
     }>
       <Table bordered size="middle" columns={columns} dataSource={data} />

@@ -76,7 +76,7 @@ const data: DataType[] = [
 
 const Swiper = () => {
   return (
-    <Card extra={<Button type="primary" icon={<PlusOutlined />}>添加</Button>}>
+    <Card extra={<Button type="primary" icon={<PlusOutlined />}>新建</Button>}>
       <Table bordered size="middle" columns={columns} dataSource={data} />
     </Card>
   )
