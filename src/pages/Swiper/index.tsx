@@ -69,7 +69,7 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'img',
     key: 'img',
     align: "center",
-    render: (text) => <Image width={100} src={text} />
+    render: (text) => <Image width={'auto'} height={80} src={text} />
   },
   {
     title: '创建时间',
