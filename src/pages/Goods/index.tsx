@@ -1,6 +1,6 @@
 import { } from 'react'
-import { Table, Button, Card, Form, Input, Col, Row, Upload, Space,Image } from 'antd';
-import type { TableProps, UploadProps } from 'antd';
+import { Table, Button, Card, Form, Input, Col, Row, Popconfirm, Space,Image } from 'antd';
+import type { TableProps } from 'antd';
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 
 interface DataType {
@@ -10,16 +10,13 @@ interface DataType {
   update_time?: string;
 }
 
-const Uploadprops: UploadProps = {
-  maxCount: 1,
-  name: 'file',
-  action: '',
-  headers: {},
-  data: {},
-  onChange(info) {
-    console.log(info);
-  },
-};
+const Popconfirmprops = {
+  title: "提示",
+  description: "是否确认删除当前数据？",
+  onConfirm() {
+    console.log('确认删除');
+  }
+}
 
 const columns: TableProps<DataType>['columns'] = [
   {
@@ -45,7 +42,14 @@ const columns: TableProps<DataType>['columns'] = [
     title: 'Action',
     key: 'action',
     align: "center",
-    render: () => <Button size="small" autoInsertSpace={false}>查看</Button>,
+    render: () => (
+      <Space size="middle">
+        <Button size="small" autoInsertSpace={false}>编辑</Button>
+        <Popconfirm {...Popconfirmprops}>
+          <Button size="small" autoInsertSpace={false} danger>删除</Button>
+        </Popconfirm>
+      </Space>
+    ),
   }
 ]
 
@@ -97,9 +101,7 @@ const Swiper = () => {
     } extra={
       <Space>
         <Button type="primary" icon={<SearchOutlined />}>搜索</Button>
-        <Upload {...Uploadprops}>
-          <Button type="primary" icon={<PlusOutlined />}>添加</Button>
-        </Upload>
+        <Button type="primary" icon={<PlusOutlined />}>添加</Button>
       </Space>
     }>
       <Table bordered size="middle" columns={columns} dataSource={data} />
