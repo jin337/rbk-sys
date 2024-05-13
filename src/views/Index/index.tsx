@@ -1,9 +1,9 @@
 import { } from 'react'
+import styles from './index.module.scss';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-
 const { Header, Content, Sider } = Layout;
 
 const Menuitems: Required<MenuProps>['items'][number][] = [
@@ -51,7 +51,7 @@ const Index = () => {
   return (
     <Layout style={{ height: '100vh' }}>
       <Header>
-        <div className='header-wrap'>
+        <div className={styles['header-wrap']}>
           <Dropdown menu={{ items }} placement="bottomRight">
             <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
           </Dropdown>
@@ -59,16 +59,17 @@ const Index = () => {
 
       </Header>
       <Layout>
-        <Sider theme="light">
+        <Sider theme="light" className={styles['sider-content']}>
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
             items={Menuitems}
+            style={{ borderRight: 0 }}
             onClick={handleClick}
           />
         </Sider>
         <Layout>
-          <Content>
+          <Content className={styles.content}>
             <Outlet />
           </Content>
         </Layout>
