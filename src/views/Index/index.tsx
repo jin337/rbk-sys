@@ -6,21 +6,21 @@ import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 const { Header, Content, Sider } = Layout;
 
-const Menuitems: Required<MenuProps>['items'][number][] = [
+const Menuitems: Required<MenuProps>['items'] = [
   {
-    key: '1',
+    key: '/member',
     label: '会员'
   },
   {
-    key: '2',
+    key: '/order',
     label: '订单'
   },
   {
-    key: '4',
-    label: '类别'
+    key: '/category',
+    label: '类别',
   },
   {
-    key: '5',
+    key: '/goods',
     label: '商品'
   },
   {

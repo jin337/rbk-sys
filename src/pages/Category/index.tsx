@@ -1,7 +1,7 @@
 import { } from 'react'
 import { Table, Space, Button, Image, Upload, Popconfirm, Card } from 'antd';
-import type { TableProps, UploadProps } from 'antd';
-import { PlusOutlined, HolderOutlined } from '@ant-design/icons';
+import type {  UploadProps,TableProps } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 
 interface DataType {
   key: string;
@@ -30,17 +30,7 @@ const Popconfirmprops = {
 }
 
 
-const columns: TableProps<DataType>['columns'] = [
-  {
-    key: 'sort',
-    align: 'center',
-    render: () => <Button
-      type="text"
-      size="small"
-      icon={<HolderOutlined />}
-      style={{ cursor: 'move' }}
-    />
-  },
+const columns: TableProps<DataType>['columns']= [
   {
     title: '图片',
     dataIndex: 'img',
