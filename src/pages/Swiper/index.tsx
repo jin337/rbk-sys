@@ -6,7 +6,7 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-import type {  UploadProps } from 'antd';
+import type { UploadProps } from 'antd';
 import type { DragEndEvent } from '@dnd-kit/core';
 import type { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 import type { ColumnsType } from 'antd/es/table';
@@ -171,7 +171,7 @@ const App: React.FC = () => {
   return (
     <Card extra={
       <Upload {...Uploadprops}>
-        <Button type="primary" icon={<PlusOutlined />}>添加</Button>
+        <Button type="primary" icon={<PlusOutlined />}>新建</Button>
       </Upload>
     }>
       <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
@@ -183,7 +183,11 @@ const App: React.FC = () => {
             components={{ body: { row: Row } }}
             columns={columns}
             dataSource={dataSource}
+            pagination={{
+              hideOnSinglePage: true
+            }}
           />
+          {/* hideOnSinglePage */}
         </SortableContext>
       </DndContext>
     </Card>
