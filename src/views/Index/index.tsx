@@ -1,6 +1,6 @@
-import { } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './index.module.scss';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu, Avatar, Dropdown } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -38,6 +38,13 @@ const items: MenuProps['items'] = [
 
 const Index = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const [selected, setSelected] = useState<string[]>([])
+
+  useEffect(() => {
+    setSelected([location.pathname])
+  }, [location])
+
   // 菜单点击事件
   const handleClick = (e: { key: string }) => {
     if (e.key.includes('/')) {
@@ -50,19 +57,16 @@ const Index = () => {
 
   return (
     <Layout style={{ height: '100vh' }}>
-      <Header>
-        <div className={styles['header-wrap']}>
-          <Dropdown menu={{ items }} placement="bottomRight">
-            <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
-          </Dropdown>
-        </div>
-
+      <Header className={styles['header-wrap']}>
+        <Dropdown menu={{ items }} placement="bottomRight">
+          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+        </Dropdown>
       </Header>
       <Layout>
         <Sider theme="light" className={styles['sider-content']}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
+            selectedKeys={selected}
             items={Menuitems}
             style={{ borderRight: 0 }}
             onClick={handleClick}

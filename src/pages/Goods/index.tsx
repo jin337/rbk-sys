@@ -1,5 +1,5 @@
 import { } from 'react'
-import { Table, Button, Card, Form, Input, Col, Row, Upload, Space } from 'antd';
+import { Table, Button, Card, Form, Input, Col, Row, Upload, Space,Image } from 'antd';
 import type { TableProps, UploadProps } from 'antd';
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 
@@ -22,6 +22,13 @@ const Uploadprops: UploadProps = {
 };
 
 const columns: TableProps<DataType>['columns'] = [
+  {
+    title: '图片',
+    dataIndex: 'img',
+    key: 'img',
+    align: "center",
+    render: (text) => <Image width={'auto'} height={80} src={text} />
+  },
   {
     title: '创建时间',
     align: "center",
